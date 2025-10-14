@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding-top: 50px;
+    }
+
+    
+    .calculator {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input[type="text"] {
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h4 class="text-center mb-4">Simple Calculator</h4>
+    <input type="text" id="result" class="form-control mb-3" readonly>
+    <div class="row g-2">
+      <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('1')">1</button></div>
+      <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('2')">2</button></div>
+      <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('3')">3</button></div>
+      <div class="col-3"><button class="btn btn-warning w-100" onclick="append('+')">+</button></div>
+
+      <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('4')">4</button></div>
+      <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('5')">5</button></div>
+      <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('6')">6</button></div>
+      <div class="col-3"><button class="btn btn-warning w-100" onclick="append('-')">-</button></div>
+
+      <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('7')">7</button></div>
+      <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('8')">8</button></div>
+      <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('9')">9</button></div>
+      <div class="col-3"><button class="btn btn-warning w-100" onclick="append('*')">*</button></div>
+
+      <div class="col-3"><button class="btn btn-danger w-100" onclick="clearResult()">C</button></div>
+      <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('0')">0</button></div>
+      <div class="col-3"><button class="btn btn-success w-100" onclick="calculate()">=</button></div>
+      <div class="col-3"><button class="btn btn-warning w-100" onclick="append('/')">/</button></div>
+    </div>
+  </div>
+
+  <script>
+    function append(value) {
+      document.getElementById('result').value += value;
+    }
+
+    function clearResult() {
+      document.getElementById('result').value = '';
+    }
+
+    function calculate() {
+      try {
+        document.getElementById('result').value = eval(document.getElementById('result').value);
+      } catch {
+        document.getElementById('result').value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
